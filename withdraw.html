@@ -8,15 +8,14 @@
 <link href="https://fonts.googleapis.com/css2?family=Ubuntu+Condensed&display=swap" rel="stylesheet">
 <link href="https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="css/loggedin.css">
-<script type="text/javascript" src="js/cashout.js"></script>
+<script type="text/javascript" src="js/index.js"></script>
  <script src="js/all.min.js"></script>
  <script type="text/javascript" src="js/SmoothMovement.compressed.js"></script>
  <script type="text/javascript" src="js/anime.js"></script>
   <head>
  	
 
-  <script type="text/javascript" src="js/canvasjs.min.js"></script>
- </head>
+  </head>
 <body id="myPage" class="w3-container w3-center" style="padding: 0; margin: 0; ">
 
 
@@ -25,8 +24,10 @@
 <div class="w3-container" id="main">
 <div class="w3-container  w3-padding"  id="maininner">
   <div class="w3-bar" style="width: 100%; ">
-   <a href="index.html" class="w3-bar-item w3-btn w3-red   w3-right" style="text-decoration: none;">Log Out </a>
-  <a href="cashin.html" class="w3-bar-item w3-btn w3-white   w3-right" style="text-decoration: none;">Cash In </a>
+
+
+  <a href="index.html" class="w3-bar-item w3-btn w3-red   w3-right" style="text-decoration: none;">Log Out </a>
+  <a href="cashout.html" class="w3-bar-item w3-btn w3-white   w3-right" style="text-decoration: none;">Cash Out </a>
     <a class="w3-bar-item   w3-left"><img src="images/icon.png" width="100px"> </a>
   
 </div>
@@ -45,7 +46,7 @@
 <div class="w3-container w3-center w3-third" id="heading">
 	<h1  class="w3-padding">CASH OUT</h1>
 	<p>For the month of January</p>
-	  <form action="cashin.html" id="formdesign" >
+	  <form action="month.html" id="formdesign" >
       <select class="w3-select" name="option" style="max-width: 300px;" id="opts">
   <option class="w3-padding" value="" disabled selected>Another Month</option>
   <option class="w3-padding" value="1">January</option>
@@ -71,9 +72,7 @@
 </div>
 
 <div class="w3-container w3-theme w3-center w3-third" style=" margin-top: 50px;">
-	<h3 style="">STATEMENT</h3>
-	<button class="w3-btn w3-black w3-round" style="min-width: 100px; " ><a href="withdraw.html">New Withdraw</a> </button>
-	<h3>Chosen Account: <i> Cash</i> </h3>
+
 		
 		</div>
 
@@ -85,6 +84,7 @@
 </div>
 
 <div class="w3-container  w3-responsive" id="tabl">
+	<h3 class="">DATA ENTRY FOR NEW WITHDRAW</h3>
 <br>
 <table class="w3-table w3-white w3-striped w3-bordered  ">
 <tr class="w3-theme-d4" style="font-family: 'Ubuntu Condensed', sans-serif; font-size: 120%;">
@@ -95,51 +95,21 @@
   <th>Cash Out</th>
 </tr>
 <tr>
-<td></td>
-  <td></td>
-<td></td>
-  <td></td>
-  <td></td>
+<td><input type="" name=""> </td>
+  <td><input type="" name=""></td>
+<td><input type="" name=""></td>
+  <td><input type="" name=""></td>
+  <td><input type="" name=""></td>
 </tr>
 
-<tr>
- <td></td>
-  <td></td>
-<td></td>
-  <td></td>
-  <td></td>
-</tr>
 
-<tr>
- <td></td>
-  <td></td>
-<td></td>
-  <td></td>
-  <td></td>
-</tr>
-
-<tr>
-  <td></td>
-  <td></td>
-<td></td>
-  <td></td>
-  <td></td>
-</tr>
-
-<tr>
- <td></td>
-  <td></td>
-<td></td>
-  <td></td>
-  <td></td>
-</tr>
 
 <tr id="totalamt" style="border-right: none;">
 	<td></td>
   <td></td>
 <td></td>
   <td></td>
-<td style="font-family: 'Ubuntu Condensed', sans-serif; font-size: 120%; font-weight: bold; text-align: center;">Total Cash Out For January<p>560909000</p> </td>	
+<td style=" text-align: center;"><button  class="w3-btn w3-black w3-round" style="width: 100px; margin-left: 20px; " ><a href="cashoutyes.html">Enter </a>  </button> </td>	
 		</tr>
 </table>
 
@@ -147,19 +117,9 @@
 
 
 <div class="w3-container w3-center w3-padding">
-<div class="w3-container w3-center w3-half w3-white">
-	<h3 class="w3-padding">Cash-Out Performance Graph </h3>
-	<p>For the month of January</p>
-<div class="w3-container" id="chartContainer" style="height: 370px; max-width: 920px; margin: 0px auto;">
-	<div class="w3-container w3-half">
-    <button  class="w3-btn w3-black w3-round" style="width: 100px; margin-left: 20px;">Withdraw </button>
-  <button  class="w3-btn w3-black w3-round" style="width: 100px; margin-left: 20px;"><a href="cashout.html"> Statement</a> <i class="fas fa-pen"></i> </button> 
-</div> 
-</div>
-</div>
 
 <div class="w3-container w3-half">
-	<button  class="w3-btn w3-black w3-round" style="width: 100px; margin-left: 20px;"><a href="withdraw.html"> Edit</a> <i class="fas fa-pen"></i> </button> <button  class="w3-btn w3-black w3-round" style="width: 100px; margin-left: 20px;">Cash In </button>
+	<button  class="w3-btn w3-black w3-round" style="width: 100px; margin-left: 20px;">Edit <i class="fas fa-pen"></i> </button> <button  class="w3-btn w3-black w3-round" style="width: 100px; margin-left: 20px;">Cash In </button>
 </div>
 
 
