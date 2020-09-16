@@ -1,4 +1,13 @@
-<%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@page import="java.sql.ResultSet"%>
+<%@page import="java.sql.Statement"%>
+<%@page import="java.sql.DriverManager"%>
+<%@page import="java.sql.Connection"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/sql" prefix="sql" %> 
+<%@ taglib prefix="json" uri="http://www.atg.com/taglibs/json" %>
+
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html>
 <title>kuzimba cash management system</title>
@@ -9,18 +18,20 @@
 <link href="https://fonts.googleapis.com/css2?family=Ubuntu+Condensed&display=swap" rel="stylesheet">
 <link href="https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="css/loggedin.css">
-<script type="text/javascript" src="js/cashout.js"></script>
  <script src="js/all.min.js"></script>
  <script type="text/javascript" src="js/SmoothMovement.compressed.js"></script>
  <script type="text/javascript" src="js/anime.js"></script>
   <head>
- 	
-
-  <script type="text/javascript" src="js/canvasjs.min.js"></script>
+   <script type="text/javascript" src="js/canvasjs.min.js"></script>
  </head>
 <body id="myPage" class="w3-container w3-center" style="padding: 0; margin: 0; ">
 
-
+ <sql:setDataSource var = "snapshot" driver = "com.mysql.jdbc.Driver"
+         url = "jdbc:mysql://localhost:3306/kuzimba"
+         user = "root"  password = "fire"/>
+      <sql:query dataSource = "${snapshot}" var = "listUsers">
+        SELECT*FROM kuzimba.withdraws;
+      </sql:query>
 
 
 <div class="w3-container" id="main">
@@ -80,7 +91,7 @@
 
 <div class="w3-container w3-theme w3-center w3-third" style="border:1px solid #000; background-color: #f0f0a8;margin-top: 10px;">
 	<p style="padding-top: 0px; padding-bottom: 0px;font-size: 12px;">Cash Flow Statement for January</p>
-		<a href="docs/january.pdf" class="w3-btn w3-black">Download Pdf <i class="fas fa-file-pdf"></i></a>
+		<a href="#" onclick="HTMLtoPDF()" class="w3-btn w3-black">Download Pdf <i class="fas fa-file-pdf"></i></a>
 		</div>
 
 </div>
@@ -88,52 +99,26 @@
 <div class="w3-container  w3-responsive" id="tabl">
 <br>
 <table class="w3-table w3-white w3-striped w3-bordered  ">
-<tr class="w3-theme-d4" style="font-family: 'Ubuntu Condensed', sans-serif; font-size: 120%;">
+    <tr class="w3-theme-d4" style="font-family: 'Ubuntu Condensed', sans-serif; font-size: 120%;">
   <th>Date</th>
   <th>Item</th>
   <th>Quantity</th>
   <th>Tax</th>
-  <th>Cash Out</th>
+  <th>Cash In</th>
 </tr>
-<tr>
-<td></td>
-  <td></td>
-<td></td>
-  <td></td>
-  <td></td>
-</tr>
+       
+        <c:forEach var="user" items="${listUsers.rows}">
+                <tr>
+                    <td><c:out value="${user.date}" /></td>
+                    <td><c:out value="${user.item}" /></td>
+                    <td><c:out value="${user.quantity}" /></td>
+                    <td><c:out value="${user.tax}"/></td>
+                    <td><c:out value="${user.cashin}"/></td>
+                </tr>
+            </c:forEach>
+    
 
-<tr>
- <td></td>
-  <td></td>
-<td></td>
-  <td></td>
-  <td></td>
-</tr>
-
-<tr>
- <td></td>
-  <td></td>
-<td></td>
-  <td></td>
-  <td></td>
-</tr>
-
-<tr>
-  <td></td>
-  <td></td>
-<td></td>
-  <td></td>
-  <td></td>
-</tr>
-
-<tr>
- <td></td>
-  <td></td>
-<td></td>
-  <td></td>
-  <td></td>
-</tr>
+    <script type="text/javascript" src="js/cashin.js"></script>
 
 <tr id="totalamt" style="border-right: none;">
 	<td></td>

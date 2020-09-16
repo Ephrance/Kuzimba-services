@@ -115,7 +115,7 @@
        
         <c:forEach var="user" items="${listUsers.rows}">
                 <tr>
-                    <td><c:out value="${user.id}" /></td>
+                    <td><c:out value="${user.date}" /></td>
                     <td><c:out value="${user.item}" /></td>
                     <td><c:out value="${user.quantity}" /></td>
                     <td><c:out value="${user.tax}"/></td>
