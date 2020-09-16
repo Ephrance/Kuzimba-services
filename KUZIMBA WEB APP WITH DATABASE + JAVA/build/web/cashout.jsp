@@ -91,20 +91,22 @@
 
 <div class="w3-container w3-theme w3-center w3-third" style="border:1px solid #000; background-color: #f0f0a8;margin-top: 10px;">
 	<p style="padding-top: 0px; padding-bottom: 0px;font-size: 12px;">Cash Flow Statement for January</p>
-		<a href="#" onclick="HTMLtoPDF()" class="w3-btn w3-black">Download Pdf <i class="fas fa-file-pdf"></i></a>
+		<a href="#" onclick="HTMLtoPDF1()" class="w3-btn w3-black">Download Pdf <i class="fas fa-file-pdf"></i></a>
 		</div>
 
 </div>
-
-<div class="w3-container  w3-responsive" id="tabl">
-<br>
+    
+<div class="w3-container  w3-responsive" id="HTMLtoPDF">
+    <h2 id="ttle" style="display: none"></h2>
+  <h4 id="ttle2" style="display: none"></h4>
+  <h5 id="ttle3" style="display: none"></h5>
 <table class="w3-table w3-white w3-striped w3-bordered  ">
     <tr class="w3-theme-d4" style="font-family: 'Ubuntu Condensed', sans-serif; font-size: 120%;">
   <th>Date</th>
   <th>Item</th>
   <th>Quantity</th>
   <th>Tax</th>
-  <th>Cash In</th>
+  <th>Cash Out</th>
 </tr>
        
         <c:forEach var="user" items="${listUsers.rows}">
@@ -113,19 +115,40 @@
                     <td><c:out value="${user.item}" /></td>
                     <td><c:out value="${user.quantity}" /></td>
                     <td><c:out value="${user.tax}"/></td>
-                    <td><c:out value="${user.cashin}"/></td>
+                    <td><c:out value="${user.cashout}"/></td>
                 </tr>
             </c:forEach>
     
 
-    <script type="text/javascript" src="js/cashin.js"></script>
+    <script type="text/javascript" src="js/cashout.js"></script>
 
 <tr id="totalamt" style="border-right: none;">
 	<td></td>
   <td></td>
 <td></td>
   <td></td>
-<td style="font-family: 'Ubuntu Condensed', sans-serif; font-size: 120%; font-weight: bold; text-align: center;">Total Cash Out For January<p>560909000</p> </td>	
+<td style="font-family: 'Ubuntu Condensed', sans-serif; font-size: 120%; font-weight: bold; text-align: center;">
+    Total Cash Out For January <br> 
+  <p>
+         <%
+try
+{
+Class.forName("com.mysql.jdbc.Driver").newInstance();
+Connection con=DriverManager.getConnection("jdbc:mysql://localhost:3306/kuzimba","root","fire");
+Statement st=con.createStatement();
+String strQuery = "SELECT SUM(cashout) FROM kuzimba.withdraws";
+ResultSet rs = st.executeQuery(strQuery);
+String Countrun="";
+while(rs.next()){
+Countrun = rs.getString(1);
+out.println("Total Cash Out :" +Countrun);
+}
+}
+catch (Exception e){
+e.printStackTrace();
+}
+%>
+          </p> </td>	
 		</tr>
 </table>
 
@@ -156,5 +179,8 @@
 </footer>
 <script src="js/jquery-3.1.0.min.js"></script>
 </div>
+            <script src="js/jspdf.js"></script>
+  <script src="js/jquery-2.1.3.js"></script>
+  <script src="js/pdfFromHTML1.js"></script>
 </body>
 </html>
