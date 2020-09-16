@@ -1,0 +1,74 @@
+#main{
+	border:40px solid #d7ba89;
+	padding: 10px;
+}
+
+#maininner{
+	border:2px solid #d7ba89;
+	background: #001433; /* For browsers that do not support gradients */        
+    background: -webkit-linear-gradient(180deg, #001433, #999999); /* For Safari 5.1 to 6.0 */
+    background: -o-linear-gradient(180deg, #001433, #999999); /* For Opera 11.1 to 12.0 */
+    background: -moz-linear-gradient(180deg, #001433, #999999); /* For Firefox 3.6 to 15 */
+    background: linear-gradient(180deg, #001433, #999999); /* Standard syntax (must be last) */
+}
+
+#mainright{
+	
+	border:0px solid #8a8a5c;
+}
+#myHeaderText{font-family: 'Ubuntu Condensed', sans-serif;
+	border: 1px dotted #001433; background-color: #003380; padding-top: 20px; font-size: 180%;
+}
+#myHeaderText i{
+	font-size: 12px; font-style: normal; 
+}
+
+#formdesign{
+	background-color: #f2f2f2;
+}
+#opts{
+border:1px solid #000;
+}
+
+.rdo{
+border:1px solid #000;
+}
+.w3-btn{
+margin-bottom: 20px;
+}
+
+.w3-bar{
+	width: 100%; margin: 0;
+}
+.w3-bar-item {
+	font-weight: normal;
+}
+p {
+	font-size: 14px;
+}
+
+#heading{
+	border-bottom: 1px dotted #000;
+}
+input{
+	padding: 5px 10px; margin-bottom: 20px;
+}
+
+@charset "UTF-8";
+@media only screen and (max-width: 600px) {
+
+#footer {
+	margin-top: 200px; border-top: 2px solid #d7ba89;
+}
+#pic{
+	width: 60%;
+}
+}
+
+/*-------------BIG SCREENS-------------*/
+@charset "UTF-8";
+@media only screen and (min-width: 600px) {
+#footer {
+	margin-top: 100px;border-top: 2px solid #d7ba89;background-color: #001433; color: #fff;
+}
+}
