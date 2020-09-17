@@ -1,0 +1,10 @@
+OkHttpClient client = new OkHttpClient().newBuilder()
+  .build();
+MediaType mediaType = MediaType.parse("application/json");
+RequestBody body = RequestBody.create(mediaType, "{\r\n    \"from\": {\r\n        \"displayName\": \"PayerFirst PayerLast\",\r\n        \"idType\": \"MSISDN\",\r\n        \"idValue\": \"978555555555\"\r\n    },\r\n    \"to\": {\r\n        \"idType\": \"MSISDN\",\r\n        \"idValue\": \"498941207269\"\r\n    },\r\n    \"amountType\": \"SEND\",\r\n    \"currency\": \"EUR\",\r\n    \"amount\": \"100\",\r\n    \"transactionType\": \"TRANSFER\",\r\n    \"initiatorType\": \"CONSUMER\",\r\n    \"note\": \"test payment\",\r\n    \"homeTransactionId\": \"9227717c-d08b-4099-90f0-32f5433656b2\"\r\n}");
+Request request = new Request.Builder()
+  .url("http://kuzimba.hipipo.mojaloop-hackathon.io:4401/transfers")
+  .method("POST", body)
+  .addHeader("Content-Type", "application/json")
+  .build();
+Response response = client.newCall(request).execute();
